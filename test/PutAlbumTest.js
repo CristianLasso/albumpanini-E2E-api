@@ -20,14 +20,14 @@ describe ('Test PUT request', async() => {
         //Act
         const response = await apiCall.post('albums/',dummy);
         const responsePut = await apiCall.put('albums/'+ response.data.albumid, {
-            'albumName': 'Name',
+            'albumid': response.data.albumid,
+            'albumName': 'ChangeName',
             'laminasNumber':  0,
             'laminas': [],
             'userref': 'm4DbIGm7U2OB4Bmqew4nRKoiP7p2'});
 
         //Assert
-        expect(response.data.name).to.not.equal(responsePut.data.name);
-        expect(response.data.author).to.not.equal(responsePut.data.author);
+        expect(response.data.albumName).to.not.equal(responsePut.data.albumName);
 
         apiCall.delete('albums/' + response.data.albumid);
     });
@@ -36,7 +36,8 @@ describe ('Test PUT request', async() => {
         //Act
         const response = await apiCall.post('albums/',dummy);
         const responsePut = await apiCall.put('albums/'+ response.data.albumid, {
-            'albumName': 'Name',
+            'albumid': response.data.albumid,
+            'albumName': 'ChangeName',
             'laminasNumber':  0,
             'laminas': [],
             'userref': 'm4DbIGm7U2OB4Bmqew4nRKoiP7p2'});
@@ -51,6 +52,7 @@ describe ('Test PUT request', async() => {
         //Act
         const response = await apiCall.post('albums/',dummy);
         const responsePut = await apiCall.put('albums/'+ response.data.albumid,{
+            'albumid': response.data.albumid,
             'albumName': '',
             'laminasNumber':  0,
             'laminas': [],

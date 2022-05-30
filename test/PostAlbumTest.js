@@ -16,15 +16,14 @@ describe ('Test POST request', async() => {
         'laminas': [],
         'userref': 'm4DbIGm7U2OB4Bmqew4nRKoiP7p2'};
 
-    it('POST services creates a book', async() => {
+    it('POST services creates an album', async() => {
         //Act
         const response = await apiCall.post('albums/',dummy);
 
         //Assert
-        expect(response.status).to.equal(200);
+        expect(response.status).to.equal(201);
         expect(response.data).to.have.property('albumid');
         assert.equal(response.data.albumName, dummy.albumName);
-        assert.equal(response.laminasNumber.author, dummy.laminasNumber);
 
         apiCall.delete('albums/' + response.data.id);
 
